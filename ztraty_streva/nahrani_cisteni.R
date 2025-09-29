@@ -7,7 +7,11 @@ cisteni_casti<-read_excel("ztraty_pocet_pylu.xlsx")
 
 data2024<-read_excel("streva_2024.xlsx")
 
-#celkové depozice
+depozice<-read_excel("Handrkov_raw.xlsx",    na = c("", NA), 
+                     col_types = c("text", "text", "text", "text", "numeric", "numeric", "numeric", "numeric", "numeric", "text", "text", "text", "numeric", "skip", "numeric", "date", "text", "numeric"),
+                     col_names = c("id", "druh_kytky", "typ", "klec_pytlik", "mnozstvi_roztoku", "mnozstvi_pylu_konspecificky", "mnozstvi_pylu_celkem", "mnozstvi_pylu_heterospecificky", "vyska_rostliny", "barva_pytliku", "opylovac", "chovani", "delka_navstevy", "zacatek_konec_cas", "pocet_navstev_hodinu", "cas_navstevy", "pohlavi", "rok"),
+                     skip = 1)
+celk_depozice <- depozice[depozice$typ == "deposition_celkem",]
 
 #visitační data
 
@@ -54,10 +58,12 @@ summary(data2024$ost_streva)
 
 # Data depozice ####
 
+summary(celk_depozice)
 
 # Data visitace ####
 
 
 # Data produkce ####
+
 
 
